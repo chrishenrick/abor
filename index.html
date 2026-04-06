@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>i love rachel bro ❤️</title>
+<img src="rachelcareca.jpeg" width="250" style="border-radius:20px;">
+<br><br>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:Arial;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    overflow:hidden;
+    color:white;
+}
+
+h1{
+    font-size:45px;
+    margin-bottom:30px;
+}
+
+button{
+    padding:15px 35px;
+    font-size:22px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    margin:10px;
+    transition:0.2s;
+}
+
+#sim{
+    background:#00c853;
+    color:white;
+}
+
+#sim:hover{
+    transform:scale(1.1);
+}
+
+#nao{
+    background:#d50000;
+    color:white;
+    position:absolute;
+}
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation: subir 5s linear infinite;
+}
+
+@keyframes subir{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-110vh);}
+}
+
+.confetti{
+    position:fixed;
+    font-size:30px;
+    animation:fall 2s linear forwards;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-50px);}
+    100%{transform:translateY(100vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Quer ter uma vida com o cucuruquinho? 💖</h1>
+
+<div>
+<button id="sim">SIM</button>
+<button id="nao">NÃO</button>
+</div>
+
+<script>
+
+const nao = document.getElementById("nao")
+const sim = document.getElementById("sim")
+
+// botão fugindo
+nao.addEventListener("mouseover",()=>{
+
+    const largura = window.innerWidth - 120
+    const altura = window.innerHeight - 60
+
+    const x = Math.random()*largura
+    const y = Math.random()*altura
+
+    nao.style.left = x+"px"
+    nao.style.top = y+"px"
+
+})
+
+// clicar sim
+sim.addEventListener("click",()=>{
+
+    alert("Agora você é oficialmente minha cucuruquinha 💖")
+
+    for(let i=0;i<60;i++){
+
+        const c = document.createElement("div")
+        c.classList.add("confetti")
+        c.innerHTML="✨"
+
+        c.style.left=Math.random()*100+"vw"
+
+        document.body.appendChild(c)
+
+        setTimeout(()=>{
+            c.remove()
+        },2000)
+
+    }
+
+})
+
+// corações subindo
+setInterval(()=>{
+
+    const heart=document.createElement("div")
+    heart.classList.add("heart")
+
+    heart.innerHTML="💖"
+
+    heart.style.left=Math.random()*100+"vw"
+    heart.style.fontSize=(Math.random()*20+15)+"px"
+
+    document.body.appendChild(heart)
+
+    setTimeout(()=>{
+        heart.remove()
+    },5000)
+
+},300)
+
+<audio autoplay loop>
+<source src="fallingdown.mp3" type="audio/mpeg">
+</audio>
+
+</script>
+
+</body>
+</html>
